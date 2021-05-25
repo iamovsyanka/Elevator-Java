@@ -1,18 +1,18 @@
-package by.ovsyanka.domain.Person;
+package by.ovsyanka.domain.person;
 
 import java.util.Random;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class PersonGenerate {
 
-    private final int minWeight = 20;
-    private final int maxWeight = 150;
-    private final int maxFloor;
+    private static final int minWeight = 20;
+    private static final int maxWeight = 150;
 
-    public PersonGenerate(int maxFloor) {
-        this.maxFloor = maxFloor;
-    }
+    public static Person generate(int maxFloor) {
+        checkArgument(maxFloor > 1, "Max count of floor must be > 1");
 
-    public Person generate() {
         int weight = new Random().ints(minWeight, maxWeight).findFirst().getAsInt();
         int currentFloor = new Random().ints(1, maxFloor).findFirst().getAsInt();
         int selectedFloor;

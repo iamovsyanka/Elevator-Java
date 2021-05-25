@@ -1,5 +1,6 @@
-package by.ovsyanka.domain.Person;
+package by.ovsyanka.domain.person;
 
+import by.ovsyanka.domain.enums.Direction;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -26,4 +27,9 @@ public class Person {
     public static Person of(int weight, int currentFloor, int selectedFloor) {
         return new Person(weight, currentFloor, selectedFloor);
     }
+
+    public Direction getDirection() {
+        return selectedFloor > currentFloor ? Direction.UP : Direction.DOWN;
+    }
 }
+
